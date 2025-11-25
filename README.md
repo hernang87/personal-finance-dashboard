@@ -1,73 +1,97 @@
-# React + TypeScript + Vite
+# Personal Finance Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, modern finance dashboard built with **React + TypeScript + Vite + Tailwind CSS**, designed to visualize personal spending using an uploaded CSV file.
 
-Currently, two official plugins are available:
+This project parses your transactions, categorizes them, and displays them through clean tables and charts.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Perfect as a **portfolio-ready full-stack demo** showing frontend skills, data parsing, charts, and UI styling.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Upload CSV and instantly visualize data
+- LocalStorage persistence — no backend required
+- Charts:
+  - Spending over time (line chart)
+  - Spending by category (pie chart)
+- Clean transaction table with categories & color badges
+- Tailwind UI with modern responsive layout
+- Handles income and expense automatically
+- CSV cleaning script included
 
-## Expanding the ESLint configuration
+## Screenshots
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+*(Add your real screenshots here once deployed)*
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+![Dashboard Screenshot](./screenshots/dashboard.png)
+![Upload View](./screenshots/upload.png)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## CSV Format
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Your CSV must include the following columns:
+
+| Column        | Example            | Notes                                        |
+|---------------|--------------------|----------------------------------------------|
+| date          | 2025-02-20         | Any valid date string                        |
+| description   | Payment Visa ICBC  | What the transaction is                      |
+| category      | ICBC / Casa / XYZ  | Used to group spending                       |
+| amount        | 123.45             | Always positive; type determines sign        |
+| type          | income / expense   | income = +, expense = −                      |
+
+Example:
+
+```
+2025-02-20,Payment Visa,ICBC,171.23,expense
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- React + TypeScript
+- Vite
+- Tailwind CSS v4
+- Recharts
+- PapaParse
+- LocalStorage
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Installation
+
+```bash
+npm install
+npm run dev
 ```
+
+## Project Structure
+
+```
+src/
+  components/
+    DashboardSummary.tsx
+    TransactionsTable.tsx
+  hooks/
+    useLocalStorage.ts
+  utils/
+    parseCsv.ts
+  types.ts
+  App.tsx
+  main.tsx
+  index.css
+```
+
+## Deployment
+
+Deploy easily using Vercel or Netlify after building:
+
+```bash
+npm run build
+```
+
+## Roadmap
+
+- Add filters (date range, category)
+- Demo data button
+- Category rules engine
+- CSV export
+- Dark mode
+
+## License
+
+MIT — feel free to use this as a starter, portfolio project, or base for your own finance tools.
