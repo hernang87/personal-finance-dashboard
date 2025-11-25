@@ -18,13 +18,6 @@ Perfect as a **portfolio-ready full-stack demo** showing frontend skills, data p
 - Handles income and expense automatically
 - CSV cleaning script included
 
-## Screenshots
-
-*(Add your real screenshots here once deployed)*
-
-![Dashboard Screenshot](./screenshots/dashboard.png)
-![Upload View](./screenshots/upload.png)
-
 ## CSV Format
 
 Your CSV must include the following columns:
